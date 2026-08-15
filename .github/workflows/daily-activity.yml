@@ -2,11 +2,11 @@ name: Daily Developer Activity
 
 on:
   workflow_dispatch:
-  inputs:
-    activity_date:
-      description: "Date for the activity (YYYY-MM-DD)"
-      required: false
-      type: string
+    inputs:
+      activity_date:
+        description: "Date for the activity (YYYY-MM-DD)"
+        required: false
+        type: string
 
   schedule:
     - cron: "0 18 * * *"
@@ -28,9 +28,9 @@ jobs:
           python-version: "3.x"
 
       - name: Generate daily activity
-  env:
-    DAILY_ACTIVITY_DATE: ${{ inputs.activity_date }}
-  run: python scripts/daily_activity.py
+        env:
+          DAILY_ACTIVITY_DATE: ${{ inputs.activity_date }}
+        run: python scripts/daily_activity.py
 
       - name: Configure Git
         run: |
