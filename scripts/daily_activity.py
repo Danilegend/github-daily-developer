@@ -1,10 +1,17 @@
 from datetime import datetime
 from pathlib import Path
+import os
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DAILY_DIR = PROJECT_ROOT / "daily"
 
-today = datetime.now()
+today_string = os.getenv("DAILY_ACTIVITY_DATE")
+
+if today_string:
+    today = datetime.strptime(today_string, "%Y-%m-%d")
+else:
+    today = datetime.now()
+
 date_string = today.strftime("%Y-%m-%d")
 
 daily_file = DAILY_DIR / f"{date_string}.md"
