@@ -8,8 +8,8 @@ on:
         required: false
         type: string
 
-  schedule:
-    - cron: "0 18 * * *"
+  # schedule:
+  #   - cron: "0 18 * * *"
 
 permissions:
   contents: write
@@ -53,7 +53,4 @@ jobs:
           git commit -m "docs: add daily developer activity"
 
       - name: Push changes
-        run: |
-          git fetch origin master
-          git rebase origin/master
-          git push origin HEAD:master
+        run: git push origin HEAD:master
